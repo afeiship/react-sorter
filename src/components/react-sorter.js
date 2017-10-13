@@ -42,7 +42,17 @@ export default class extends Component{
   calcValue(inCallback){
     const { reverse } = this.props;
     const { value } = this.state;
-    const newValue = ( value ==='none' || value === 'desc') && !reverse ? 'asc' : 'desc';
+    let newValue;
+    switch(true){
+      case value === 'none' && reverse:
+      case value === 'asc':
+        newValue = 'desc';
+        break;
+      case value === 'none' && !reverse:
+      case value === 'desc':
+        newValue = 'asc';
+        break;
+    }
     this.setState({ value: newValue }, inCallback );
   }
 
