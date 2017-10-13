@@ -53,9 +53,9 @@ export default class extends Component{
   render(){
     const {className, children, value, ...props} = this.props;
     return (
-      <span {...props} data-value={this.state.value} className={classNames('react-sorter',className)} onClick={this._onClick}>
+      <button {...props} data-value={this.state.value} className={classNames('react-sorter',className)} onClick={this._onClick}>
         {children}
-      </span>
+      </button>
     );
   }
 }
