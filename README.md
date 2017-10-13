@@ -8,12 +8,14 @@
   static propTypes = {
     className:PropTypes.string,
     value: PropTypes.string,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    reverse: PropTypes.bool,
   };
 
   static defaultProps = {
     value: 'none',
-    onChange: noop
+    onChange: noop,
+    reverse: false
   };
   
 ```
@@ -48,7 +50,7 @@ class App extends React.Component{
   render(){
     return (
       <div className="hello-react-sorter">
-      <ReactSorter ref='rc1' onChange={this._change1}>
+      <ReactSorter ref='rc1' reverse onChange={this._change1}>
         Sorter1
       </ReactSorter>
       <ReactSorter ref='rc2' onChange={this._change2}>

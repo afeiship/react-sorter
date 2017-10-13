@@ -14,12 +14,14 @@ export default class extends Component{
   static propTypes = {
     className:PropTypes.string,
     value: PropTypes.string,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    reverse: PropTypes.bool,
   };
 
   static defaultProps = {
     value: 'none',
-    onChange: noop
+    onChange: noop,
+    reverse: false
   };
   /*===properties end===*/
 
@@ -38,8 +40,9 @@ export default class extends Component{
   }
 
   calcValue(inCallback){
+    const { reverse } = this.props;
     const { value } = this.state;
-    const newValue = ( value ==='none' || value === 'desc') ? 'asc' : 'desc';
+    const newValue = ( value ==='none' || value === 'desc') && !reverse ? 'asc' : 'desc';
     this.setState({ value: newValue }, inCallback );
   }
 
