@@ -18,7 +18,7 @@ export default class extends Component{
   };
 
   static defaultProps = {
-    value: '',
+    value: 'none',
     onChange: noop
   };
   /*===properties end===*/
@@ -39,7 +39,7 @@ export default class extends Component{
 
   calcValue(inCallback){
     const { value } = this.state;
-    const newValue = ( !value || value === 'desc') ? 'asc' : 'desc';
+    const newValue = ( value ==='none' || value === 'desc') ? 'asc' : 'desc';
     this.setState({ value: newValue }, inCallback );
   }
 
@@ -51,9 +51,9 @@ export default class extends Component{
   };
 
   render(){
-    const {className, children,...props} = this.props;
+    const {className, children, value, ...props} = this.props;
     return (
-      <span {...props} data-sort-value={this.state.value} className={classNames('react-sorter',className)} onClick={this._onClick}>
+      <span {...props} data-value={this.state.value} className={classNames('react-sorter',className)} onClick={this._onClick}>
         {children}
       </span>
     );
