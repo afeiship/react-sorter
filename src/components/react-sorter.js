@@ -64,7 +64,7 @@ export default class extends Component{
   };
 
   render(){
-    const {className, children, value,reverse, ...props} = this.props;
+    const {className, children, reverse, ...props} = this.props;
     return (
       <button {...props} data-value={this.state.value} className={classNames('react-sorter',className)} onClick={this._onClick}>
         {children}
