@@ -39,7 +39,14 @@ export default class extends Component{
     }
   }
 
-  calcValue(inCallback){
+  _onClick = e => {
+    const { onChange } = this.props;
+    this._calcValue(()=>{
+      onChange({ target:{ value: this.state.value } });
+    });
+  };
+
+  _calcValue(inCallback){
     const { reverse } = this.props;
     const { value } = this.state;
     let newValue;
@@ -55,13 +62,6 @@ export default class extends Component{
     }
     this.setState({ value: newValue }, inCallback );
   }
-
-  _onClick = e => {
-    const { onChange } = this.props;
-    this.calcValue(()=>{
-      onChange({ target:{ value: this.state.value } });
-    });
-  };
 
   render(){
     const {className, children, reverse, ...props} = this.props;
